@@ -35,3 +35,14 @@ may be appropriate.
 [rst]: http://docutils.sourceforge.net/rst.html
 [md]: https://tools.ietf.org/html/rfc7764#section-3.5 "CommonMark variant"
 [md use]: https://packaging.python.org/specifications/core-metadata/#description-content-type-optional
+
+# install 
+pip install -e .
+pip uninstall -y sampleproject
+
+# setuptools test
+pip setup.py test
+python setup.py test -s tests.test_some_manager.TestSomeManager
+
+# tox
+pip install tox
