@@ -44,5 +44,10 @@ pip uninstall -y sampleproject
 pip setup.py test
 python setup.py test -s tests.test_some_manager.TestSomeManager
 
-# tox
+# nose
+pip install nose
+nosetests -v
+
+# tox - test on multiple python versions
 pip install tox
+tox
