@@ -175,15 +175,18 @@ setup(
     # If using Python 2.6 or earlier, then these have to be included in
     # MANIFEST.in as well.
     package_data={  # Optional
-        'sample': ['package_data.dat'],  #'package_data.dat' will be installed as '<sys.prefix>/sample/package_data.dat'
+        # To be treated as package, __init__.py should exist.
+        'sample': ['package_data.dat'],  #'package_data.dat' will be installed to '<sys.prefix>/sample'
+        'sample.lib': ['lib1.so'], # 'lib1.so' will be installed to '<sys.prefix>/sample/lib'
+        # '*.cfg' will be searched for in every package and installed in the same location as the package. e.g. cfg/sample.cfg to be installed as '<sys.prefix>/sample/cfg/sample.cfg'
+        '': ['*.cfg']
     },
 
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:
     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
     #
-    # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
-    data_files=[('my_data', ['data/data_file']),  #'data_file' will be installed as '<sys.prefix>/my_data/data_file'
+    data_files=[('my_data', ['data/data_file']),  #'data_file' will be installed as '/usr/local/my_data/data_file'
                 ('/tmp/sample', ['data/data_file'])],  #'data_file' will be installed as '/tmp/sample/data_file'
 
     # To provide executable scripts, use entry points in preference to the
